@@ -1,24 +1,50 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import Blog from "./Blog/Blog";
+import BlogWithHOC from "./BlogWithHOC/BlogWithHOC";
 
 function App() {
+  const [isHOCActive, setIsHOCActive] = React.useState(false);
+  const [enableSkeletonTemplate, setEnableSkeletonTemplate] =
+    React.useState(false);
+  
+    const handleSetHOCActive = (value: boolean) => {
+    setIsHOCActive(value);
+  };
+
+  const handleActiveSkeletonTemplate = (value: boolean) => {
+    setEnableSkeletonTemplate(value);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+      <div>
+        <button type="button" onClick={() => handleSetHOCActive(true)} className={isHOCActive ? 'activeButton' : ''}>
+          With HOC
+        </button>
+        <button type="button" onClick={() => handleSetHOCActive(false)} className={!isHOCActive ? 'activeButton' : ''}>
+          Without HOC
+        </button>
+      </div>
+      <div>
+        <button
+          disabled={!isHOCActive}
+          type="button"
+          onClick={() => handleActiveSkeletonTemplate(false)}
+          className={(!enableSkeletonTemplate && isHOCActive) ? 'activeButton' : ''}
         >
-          Learn React
-        </a>
-      </header>
+          Default Skeleton Template
+        </button>
+        <button
+          disabled={!isHOCActive}
+          type="button"
+          onClick={() => handleActiveSkeletonTemplate(true)}
+          className={(enableSkeletonTemplate && isHOCActive) ? 'activeButton' : ''}
+        >
+          Custom Skeleton Template
+        </button>
+      </div>
+      {isHOCActive ? <BlogWithHOC enableSkeletonTemplate={enableSkeletonTemplate} /> : <Blog />}
     </div>
   );
 }
