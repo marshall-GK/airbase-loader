@@ -23,7 +23,6 @@ const BlogWithHOC: React.FC<any> = (props) => {
   React.useEffect(() => {
     skeletonLoadingTemplate();
     handleReload();
-    console.log({ enableSkeletonTemplate });
   }, [enableSkeletonTemplate]);
 
   React.useEffect(() => {
@@ -71,7 +70,7 @@ const BlogWithHOC: React.FC<any> = (props) => {
   };
 
   const renderBlogContent = () => {
-    return <div>{blogData.content}</div>;
+    return <div dangerouslySetInnerHTML={{__html: blogData.content}}></div>;
   };
 
   const handleReload = () => {

@@ -1,6 +1,7 @@
 .App {
   text-align: center;
-  padding: '10px'
+  display: flex;
+  justify-content: center;
 }
 
 .App-logo {
@@ -31,6 +32,24 @@
 
 .activeButton {
   background: #61dafb;
+}
+
+.configContainer {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  border-bottom: solid 2px #b7b7b7;
+  margin-bottom: 20px;
+}
+
+.configActions {
+  display: flex;
+  column-gap: 10px;
+}
+.appContainer {
+  /* border: solid 1px #b7b7b7; */
+  width: 800px;
+  /* padding: 20px; */
 }
 
 @keyframes App-logo-spin {

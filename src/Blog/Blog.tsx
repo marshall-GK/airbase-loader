@@ -30,7 +30,6 @@ const Blog: React.FC<any> = (props) => {
   };
 
   const handleImageLoad = (e: any) => {
-    console.log(e);
     setIsImageLoaded(true);
   };
 
@@ -64,7 +63,7 @@ const Blog: React.FC<any> = (props) => {
         </div>
       )
     }
-    return <div>{blogData.content}</div>;
+    return <div dangerouslySetInnerHTML={{__html: blogData.content}}></div>;
   };
 
   const handleReload = () => {
