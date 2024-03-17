@@ -18,6 +18,7 @@ const BlogWithHOC: React.FC<any> = (props) => {
 
   const [reload, setReload] = React.useState(true);
   const [isImageLoaded, setIsImageLoaded] = React.useState(false);
+
   const classes = useStyles();
 
   React.useEffect(() => {
@@ -70,7 +71,7 @@ const BlogWithHOC: React.FC<any> = (props) => {
   };
 
   const renderBlogContent = () => {
-    return <div dangerouslySetInnerHTML={{__html: blogData.content}}></div>;
+    return <div dangerouslySetInnerHTML={{ __html: blogData.content }}></div>;
   };
 
   const handleReload = () => {
@@ -107,7 +108,7 @@ const BlogWithHOC: React.FC<any> = (props) => {
 
   return (
     <div key={`${enableSkeletonTemplate}`}>
-      <button type="button" onClick={handleReload}>
+      <button type="button" onClick={handleReload} disabled={!blogData.title}>
         Reload
       </button>
       <div className={classes.blogPostContainer}>

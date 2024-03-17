@@ -79,7 +79,7 @@ const Blog: React.FC<any> = (props) => {
 
   return (
     <div>
-      <button type="button" onClick={handleReload}>
+      <button type="button" onClick={handleReload} disabled={!blogData.title}>
         Reload
       </button>
       <div className={classes.blogPostContainer}>
